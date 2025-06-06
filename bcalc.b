@@ -15,7 +15,7 @@ is_digit() return ch >= '0' & ch <= '9';
 
 expected(what){
 	extrn printf;
-	printf("syntax error: expected %s\n", what);
+	printf("syntax error: expected %s*n", what);
 	error = 1;
 }
 
@@ -174,6 +174,6 @@ main(){
 		result = expr();
 	}
 
-	if(!error) printf("%ld\n", result);
+	if(!error) printf("%ld*n", result);
 	return error;
 }
