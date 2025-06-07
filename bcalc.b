@@ -164,6 +164,8 @@ main(){
 	MINUS = ++iota;
 	MUL = ++iota;
 	DIV = ++iota;
+	LPAREN = ++iota;
+	RPAREN = ++iota;
 
 	advance();
 	if(ch == 0){
