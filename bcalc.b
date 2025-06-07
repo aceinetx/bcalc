@@ -10,6 +10,7 @@ MUL;
 DIV;
 LPAREN;
 RPAREN;
+EXCLAMATION;
 
 is_digit() return ch >= '0' & ch <= '9';
 
@@ -55,6 +56,7 @@ next() {
 		else if (ch == '/') token = DIV;
 		else if (ch == '(') token = LPAREN;
 		else if (ch == ')') token = RPAREN;
+		else if (ch == '!') token = EXCLAMATION;
 
 		advance();
 		if (token) break;
@@ -90,7 +92,13 @@ lit(){
 
 factor(){
 	extrn puts, expr, printf;
-	auto v;
+	auto v, not;
+	not = 0;
+
+	if(token == EXCLAMATION){
+		not = 1;
+		next();
+	}
 
 	if(token == LPAREN){
 		next();
@@ -100,10 +108,12 @@ factor(){
 		if(token != RPAREN) expected("RPAREN");
 
 		next();
+		if(not) v = !v;
 		return v;
 	}
 
 	v = lit();
+	if(not) v = !v;
 	return v;
 }
 
@@ -166,6 +176,7 @@ main(){
 	DIV = ++iota;
 	LPAREN = ++iota;
 	RPAREN = ++iota;
+	EXCLAMATION = ++iota;
 
 	advance();
 	if(ch == 0){
