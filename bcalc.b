@@ -32,8 +32,8 @@ advance() {
 do_number(){
 	while(ch){
 		if(is_digit()){
-			number *= 10;
-			number += ch - '0';
+			number =* 10;
+			number =+ ch - '0';
 		} else break;
 
 		advance();
@@ -129,9 +129,9 @@ term(){
 		right = factor();
 
 		if(op == MUL){
-			left *= right;
+			left =* right;
 		} else if(op == DIV){
-			left /= right;
+			left =/ right;
 		}
 		op = token;
 		if(!op) break;
@@ -151,9 +151,9 @@ expr(){
 		right = term();
 
 		if(op == PLUS){
-			left += right;
+			left =+ right;
 		} else if(op == MINUS){
-			left -= right;
+			left =- right;
 		}
 		op = token;
 		if(!op) break;
