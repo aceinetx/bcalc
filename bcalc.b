@@ -12,7 +12,7 @@ LPAREN;
 RPAREN;
 EXCLAMATION;
 
-is_digit() return ch >= '0' & ch <= '9';
+is_digit() return(ch >= '0' & ch <= '9');
 
 expected(what){
 	extrn printf;
@@ -87,7 +87,7 @@ lit(){
 
 	next();
 
-	return v;
+	return(v);
 }
 
 factor(){
@@ -109,12 +109,12 @@ factor(){
 
 		next();
 		if(not) v = !v;
-		return v;
+		return(v);
 	}
 
 	v = lit();
 	if(not) v = !v;
-	return v;
+	return(v);
 }
 
 term(){
@@ -136,7 +136,7 @@ term(){
 		op = token;
 		if(!op) break;
 	}
-	return left;
+	return(left);
 }
 
 expr(){
@@ -158,7 +158,7 @@ expr(){
 		op = token;
 		if(!op) break;
 	}
-	return left;
+	return(left);
 }
 /* - parser */
 
@@ -188,5 +188,5 @@ main(){
 	}
 
 	if(!error) printf("%ld*n", result);
-	return error;
+	return(error);
 }
